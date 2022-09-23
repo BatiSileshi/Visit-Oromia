@@ -1,0 +1,16 @@
+{% load static %}
+
+
+<body class="hold-transition login-page">
+
+    {% if messages %}
+
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% block content %} {% endblock %}
+
+
+</body>

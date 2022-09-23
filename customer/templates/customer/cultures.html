@@ -1,0 +1,12 @@
+{% extends 'customer/main.html'%} {%block content %}
+<div>
+    <h2>Cultures</h2>
+    {% for culture in cultures %}
+    <div>
+
+        <h4>{{culture.name}}</h4>
+        <p>{{culture.description}}</p>
+    </div>
+    {%endfor%}
+</div>
+{% endblock content%}

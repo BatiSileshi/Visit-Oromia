@@ -1,0 +1,47 @@
+{% extends 'customer/main.html'%} {%block content %}
+<div>home</div>
+
+
+<div>
+    <h2>News</h2>
+    {% for new in news %}
+    <div>
+        {% if new.photo %}
+        <img src="{{new.photo.url}}" alt="This news has no image" style="width: 70px; height: 50px;"> {%else%}
+        <p>This news has no image</p>{%endif%}
+        <p>{{new.about}}</p>
+    </div>
+    {%endfor%}
+</div>
+
+{% for place in places|slice:":3" %}
+<div>
+    {% if place.photo %}
+    <img src="{{place.photo.url}}" alt="Plave image" style="width: 70px; height: 50px;"> {%endif%}
+    <h3>{{place.location}}</h3>
+
+    <p>{{place.description}}</p>
+
+</div>
+
+{%endfor%}
+
+
+<h2>Available Visit Plans</h2>
+{% for visit in visits %}
+<div>
+    <h2>{{visit.visit_route.name}}</h2>
+    <h3>{{visit.title}}</h3>
+    <p>{{visit.date}}</p>
+    <p>{{visit.description}}</p>
+    <a href="{% url 'confirm-plan' visit.id %}"><button>Plan</button></a>
+    <hr>
+</div>
+
+{%endfor%} {% for visit_route in visit_routes %}
+<div>
+    <h2>{{visit_route.name}}</h2>
+    <p>{{visit_route.description}}</p>
+</div>
+
+{%endfor%} {%endblock%}

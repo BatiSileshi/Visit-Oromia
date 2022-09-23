@@ -1,0 +1,13 @@
+{% extends 'customer/main.html'%} {%block content %}
+<div>
+    <h2>News</h2>
+    {% for new in news %}
+    <div>
+        {% if new.photo %}
+        <img src="{{new.photo.url}}" alt="This news has no image" style="width: 70px; height: 50px;"> {%else%}
+        <p>This news has no image</p>{%endif%}
+        <p>{{new.about}}</p>
+    </div>
+    {%endfor%}
+</div>
+{% endblock content%}

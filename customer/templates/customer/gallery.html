@@ -1,0 +1,12 @@
+{% extends 'customer/main.html'%} {%block content %}
+<div>
+    {% for gallery in galleries %}
+    <div>
+        {% if gallery.photo %}
+        <img src="{{gallery.photo.url}}" alt="Please come and see when your connection is sufficient" style="width: 70px; height: 50px;"> {%endif%}
+        <p>{{gallery.about}}</p>
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock%}

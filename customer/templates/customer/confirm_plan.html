@@ -1,0 +1,14 @@
+{% extends 'customer/main.html'%} {%block content %}
+<div>confirm plan</div>
+<div>
+    <h2>You are planning ...</h2>
+    <h4>{{visit.visit_route.name}}</h4>
+    <h4>{{visit}}</h4>
+
+    <form action="" method="POST">
+        {% csrf_token%}
+        <input type="submit" value="Confirm Plan">
+    </form>
+    <a href="{% url 'home' %}"><button>Cancel</button></a>
+</div>
+{%endblock%}

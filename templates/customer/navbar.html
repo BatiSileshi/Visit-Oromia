@@ -1,0 +1,16 @@
+<ul>
+    <li><a href="{% url 'home' %} " class="active ">Home</a></li>
+    <li><a href="{% url 'news' %} " class="active ">News</a></li>
+    <li><a href="{% url 'plans' %} " class="active ">Plans</a></li>
+    <li><a href="{% url 'gallery' %} " class="active ">Gallery</a></li>
+    <li><a href="{% url 'cultures' %} " class="active ">Cultures</a></li>
+    {% if request.user.is_authenticated %}
+    <li><a href="{% url 'my-plan' request.user.id %}">My Plans</a></li>
+
+    <a href="{% url 'logout' %} ">Logout</a> {%else%}
+
+
+    <li><a class="get-a-quote " href="{% url 'login' %} ">Login/Register</a></li>{%endif%}
+</ul>
+
+<hr>

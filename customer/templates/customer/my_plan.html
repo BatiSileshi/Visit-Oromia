@@ -1,0 +1,9 @@
+{% extends 'customer/main.html'%} {%block content %}
+<div>myplans</div>
+<div>
+    {% for plan_visit in plan_visits%}
+    <p>{{plan_visit.first_name}} -- {{plan_visit.last_name}} -- {{plan_visit.email}} -- {{plan_visit.visit.visit_route.name}} -- {{plan_visit.visit.title}} -- {{plan_visit.visit.date}} -- <a href="{% url 'cancel-plan' plan_visit.id %}"><button>Cancel</button></a></p>
+    {%endfor%}
+</div>
+
+{%endblock%}

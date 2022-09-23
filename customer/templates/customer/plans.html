@@ -1,0 +1,13 @@
+{% extends 'customer/main.html'%} {%block content %}
+<h2>Available Visit Plans</h2>
+{% for visit in visits %}
+<div>
+    <h2>{{visit.visit_route.name}}</h2>
+    <h3>{{visit.title}}</h3>
+    <p>{{visit.date}}</p>
+    <p>{{visit.description}}</p>
+    <a href="{% url 'confirm-plan' visit.id %}"><button>Plan</button></a>
+    <hr>
+</div>
+
+{%endfor%} {% endblock content%}
