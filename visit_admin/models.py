@@ -11,7 +11,7 @@ class VisitRoute(models.Model):
     created=models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):
         return self.name
-    
+
 class Visit(models.Model):
     visit_route=models.ForeignKey(VisitRoute, on_delete=models.CASCADE, null=True)
     title=models.CharField(max_length=200, null=True)

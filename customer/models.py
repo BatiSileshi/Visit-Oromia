@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 User = settings.AUTH_USER_MODEL
 from visit_admin.models import Visit
+from datetime import date
 # Create your models here.
 
 class PlanVisit(models.Model):
@@ -15,3 +16,9 @@ class PlanVisit(models.Model):
     
     def __str__(self):
         return str(self.visit)
+    
+
+
+@property
+def is_past_due(self):
+    return date.today() >= self.date

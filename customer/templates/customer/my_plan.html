@@ -1,9 +1,38 @@
 {% extends 'customer/main.html'%} {%block content %}
-<div>myplans</div>
-<div>
-    {% for plan_visit in plan_visits%}
-    <p>{{plan_visit.first_name}} -- {{plan_visit.last_name}} -- {{plan_visit.email}} -- {{plan_visit.visit.visit_route.name}} -- {{plan_visit.visit.title}} -- {{plan_visit.visit.date}} -- <a href="{% url 'cancel-plan' plan_visit.id %}"><button>Cancel</button></a></p>
-    {%endfor%}
-</div>
 
-{%endblock%}
+<div class="container">
+    <h4 class="brand-logo center">My Plans</h4>
+    <hr width="50%" ; height="1px;" color="grey">
+    <table>
+        <thead>
+            <tr>
+                <th>Visitor</th>
+                <th>Visitor Email</th>
+                <th>Visit Route</th>
+                <th>Visit Title</th>
+                <th>Visit Date</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for plan_visit in plan_visits%} {% now "Ymd" as current_year %}
+            <tr>
+                <td>{{plan_visit.first_name}} {{plan_visit.last_name}}</td>
+                <td>{{plan_visit.email}}</td>
+                <td>{{plan_visit.visit.visit_route.name}}</td>
+                <td>{{plan_visit.visit.title}}</td>
+                <td>{{plan_visit.visit.date|date:"D, d M, Y"}}</td>
+
+
+                <td>{% if current_year >= plan_visit.visit.date|date:"Ymd" %} <span class="red-text">Expired</span> {% else %} <span class="green-text">Active</span> {% endif %}</td>
+                <td>
+                    {% if current_year >= plan_visit.visit.date|date:"Ymd" %} {% else %} <a class="btn red light" href="{% url 'cancel-plan' plan_visit.id %}"> Cancel</a> {% endif %}
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{%endblock%}cd

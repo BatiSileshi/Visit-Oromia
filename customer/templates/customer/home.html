@@ -1,47 +1,225 @@
 {% extends 'customer/main.html'%} {%block content %}
-<div>home</div>
 
+<!-- SLIDESHOW -->
 
-<div>
-    <h2>News</h2>
-    {% for new in news %}
-    <div>
-        {% if new.photo %}
-        <img src="{{new.photo.url}}" alt="This news has no image" style="width: 70px; height: 50px;"> {%else%}
-        <p>This news has no image</p>{%endif%}
-        <p>{{new.about}}</p>
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+
+        {% load static %}
+        <img class="imgslide" src="{% static 'images/slideshow/countryside.jpg' %}" alt="countryside">
+        <div class="text">Oromia Countryside
+            <br>
+            <div class="parag"> Green and full of natural resources </div>
+        </div>
+
     </div>
-    {%endfor%}
+
+    <div class="mySlides fade">
+
+        <img class="imgslide" src="{% static 'images/slideshow/yeedala.jpg' %}" alt="yeedala">
+        <div class="text">Beautiful Nature
+            <br>
+            <div class="parag"> Look at them and enjoy gift of nature </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade">
+
+        <img class="imgslide" src="{% static 'images/slideshow/town_slideshow.jpg' %}" alt="towns">
+        <div class="text">Towns of Oromia
+            <br>
+            <div class="parag"> Come and visit beautiful towns </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade">
+
+        <img class="imgslide" src="{% static 'images/slideshow/irreechaaslidshow.webp' %}" alt="irrecha">
+        <div class="text">Cultures and Holidays
+            <br>
+            <div class="parag">Different cultures and holidays of the people </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade">
+
+        <img class="imgslide" src="{% static 'images/slideshow/sofumer.jpg'%}" alt="irrecha">
+        <div class="text">Natural Resources
+            <br>
+            <div class="parag">The gifted land of nature </div>
+        </div>
+    </div>
 </div>
-
-{% for place in places|slice:":3" %}
-<div>
-    {% if place.photo %}
-    <img src="{{place.photo.url}}" alt="Plave image" style="width: 70px; height: 50px;"> {%endif%}
-    <h3>{{place.location}}</h3>
-
-    <p>{{place.description}}</p>
-
+<br>
+<!-- Next and previous buttons -->
+<div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
 </div>
+<hr width="50%" ; height="1px;" color="grey">
+<!-- END OF SLIDESHOW  -->
+<!-- CULTURAL FOODS, CLOTHES, MATERIALS -->
+<section class="container section center" id="photo's">
+    <div class="row">
+        <div class="col s12 m6 l6">
+            <img class="img2" src="{% static 'images/list/cult_food.jpg' %}" alt="culturalfood">
+        </div>
+        <div class="col s12 m6 l6">
+            <h5 class="black-text text-darken-4">Delicious</h5>
+            <h5 class="red-text"> Cultural Foods </h5>
+            <p> There are many cultural food in Oromia</p>
+            <p> Caccabsaa, Ancootee, Cumboo, Marqaa </p>
+        </div>
 
-{%endfor%}
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6 l6">
+            <img class="img2" src="{% static 'images/list/cult_cloth.jpg' %}" " alt="cultural clothes ">
+
+        </div>
+        <div class="col s12 m6 l6 ">
+            <h5 class="black-text text-darken-4 ">Beautiful and well designend</h5>
+            <h5 class="red-text "> Cultural Clothes </h5>
+            <p> We have numerous colorful and amazingly designend clothes</p>
+            <p>Gaabii, Kittaa, Sabbata, Gorfoo  </p>
+
+        </div>
 
 
-<h2>Available Visit Plans</h2>
-{% for visit in visits %}
-<div>
-    <h2>{{visit.visit_route.name}}</h2>
-    <h3>{{visit.title}}</h3>
-    <p>{{visit.date}}</p>
-    <p>{{visit.description}}</p>
-    <a href="{% url 'confirm-plan' visit.id %}"><button>Plan</button></a>
-    <hr>
-</div>
+    </div>
 
-{%endfor%} {% for visit_route in visit_routes %}
-<div>
-    <h2>{{visit_route.name}}</h2>
-    <p>{{visit_route.description}}</p>
-</div>
+    <div class="row ">
+        <div class="col s12 m6 l6 ">
+            <img class="img2 " src="{% static 'images/list/boraatii.jpeg' %} " alt="cultural material ">
+        </div>
+        <div class="col s12 m6 l6 ">
+            <h5 class="black-text text-darken-4 ">Oromo</h5>
+            <h5 class="red-text "> Cultural Materials </h5>
+            <p>There are many cultural materials counting many decades which shows History of past peoples and also those used in war</p>
+            <p>Boraatii, Gaachana, Eeboo </p>
 
-{%endfor%} {%endblock%}
+        </div>
+
+    </div>
+</section>
+<!-- end of CULTURAL FOODS, CLOTHES, MATERIALS -->
+
+
+<!-- NEWS -->
+<section>
+    <div class="cont ">
+        <h4 class="brand-logo center ">News</h4>
+        <hr width="50% " ; height="1px; " color="grey ">
+        <div class="news row ">
+            {% for new in news %}
+            <div class="col s12 m6 l4 ">
+                <div class="news-card ">
+                    {% if new.photo %}
+                    <div class="news-image card-image ">
+                        <img src="{{new.photo.url}} ">
+                    </div>
+                    {%endif%}
+                    <div class="news-content ">
+                        <span class="card-title ">{{new.title}}</span>
+                        <p>{{new.about}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+<!-- END OF NEWS -->
+
+<!-- PLACES TO VISIT -->
+<section>
+    <div class="cont ">
+        <h4 class="gray-text center brand-logo ">Places to visit</h4>
+        <hr width="50% " ; height="1px; " color="grey ">
+        <div class="row ">
+            {% for place in places|slice:":3 " %}
+            <div class="col s12 m6 l4 ">
+                <div class="card ">
+                    {% if place.photo %}
+                    <div class="card-image "> <img src="{{place.photo.url}} " alt="Places to visit image " style="height: 240px; "></div>
+                    {%endif%}
+                    <div class="card-content black-text ">
+
+                        <span class="card-title green-text ">{{place.name}}</span>
+                        <p>{{place.location}} <br> {{place.description}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+        <!-- </div> -->
+        <div class="center blue-text ">
+            <a href="{% url 'places' %} " class="btn gray ">
+            View More Places ->
+        </a>
+        </div>
+
+</section>
+<!-- END OF PLACES TO VISIT -->
+
+<!-- plans  -->
+<section>
+    <div class="cont ">
+        <h4 class="brand-logo center ">Plans</h4>
+        <hr width="50% " ; height="1px; " color="grey ">
+
+        <div class="row ">
+            {% for visit in visits|slice:":8 " %}
+            {% now "Ymd " as current_year %}
+            <div class="col s12 m6 l3 ">
+                <div class="plans card green-grey darken-1 ">
+                    <div class="card-content black-text ">
+                        <h5>{{visit.visit_route.name}}</h5>
+                        <h6 class="card-title ">{{visit.title}}</h6>
+                        <h6 class="card-title ">Visit Date: {{visit.date}}</h6>
+                        <p>{{visit.description}}</p>
+                    </div>
+                    <div class="card-action ">
+                        {% if current_year >= visit.date|date:"Ymd " %}<span class="red-text ">Plan Expired</span>{% else %}
+                        <a href="{% url 'confirm-plan' visit.id %} " class="btn green ">Plan Now</a> {% endif %}
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <div class="center blue-text ">
+            <a href="{% url 'plans' %} " class="btn gray ">
+            More Plans ->
+        </a>
+        </div>
+    </div>
+</section>
+<!-- end of plans -->
+
+<!-- VISIT ROUTES -->
+<section>
+    <div class="container ">
+        <h4 class="brand-logo center ">Visit Routes</h4>
+        <hr width="50% " ; height="1px; " color="grey ">
+
+        <div class="row ">
+            {% for visit_route in visit_routes %}
+            <div class="col ">
+                <h5>{{visit_route.name}}</h5>
+                <p>{{visit_route.description}}</p>
+            </div>
+            {%endfor%}
+
+
+        </div>
+    </div>
+</section>
+<!-- END OF VISIT ROUTES -->
+
+{%endblock%}

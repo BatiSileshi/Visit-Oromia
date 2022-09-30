@@ -1,0 +1,25 @@
+{% extends 'visit_admin/main.html'%} {%block content %}
+<div>
+    <a href="{% url 'visit_admin:add-visitroute' %}">Add Visit route</a>
+    <table>
+        <thead>
+            <th>Visit Route Name</th>
+            <th>Visit Route Description</th>
+        </thead>
+
+        <tbody>
+            {% for visit_route in visit_routes %}
+            <tr>
+                <td>{{visit_route.name}}</td>
+                <td>{{visit_route.description}}</td>
+                <td><a href="{% url 'visit_admin:update-visitroute' visit_route.id %}">Update</a></td>
+                <td><a href="{% url 'visit_admin:delete-visitroute' visit_route.id %}">Delete</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+
+    </table>
+</div>
+
+
+{%endblock%}

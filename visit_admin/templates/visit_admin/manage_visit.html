@@ -1,0 +1,30 @@
+{% extends 'visit_admin/main.html'%} {%block content %}
+<div>
+    <a href="{% url 'visit_admin:add-visit' %}">Add Visit</a>
+    <table>
+        <thead>
+            <th>Visit/Plan Route Name</th>
+            <th>Visit/Plan Route Description</th>
+            <th>Plan/Visit Title</th>
+            <th>Plan/Visit Date</th>
+            <th>Plan/Visit Description</th>
+        </thead>
+
+        <tbody>
+            {% for visit in visits %}
+            <tr>
+                <td>{{visit.visit_route.name}}</td>
+                <td>{{visit.visit_route.description}}</td>
+                <td>{{visit.title}}</td>
+                <td>{{visit.date}}</td>
+                <td>{{visit.description}}</td>
+                <td><a href="{% url 'visit_admin:update-visit' visit.id %}">Update</a></td>
+                <td><a href="{% url 'visit_admin:delete-visit' visit.id %}">Delete</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+
+    </table>
+</div>
+
+{%endblock%}

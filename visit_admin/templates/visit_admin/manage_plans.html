@@ -1,0 +1,33 @@
+{% extends 'visit_admin/main.html'%} {%block content %}
+<div class="container">
+    <h4 class="brand-logo center">Requested Plans</h4>
+    <hr width="50%" height="1px" color="grey">
+    <table>
+        <thead>
+            <tr>
+                <th>Visitor</th>
+                <th>Visitor Email</th>
+                <th>Visit Route</th>
+                <th>Visit Title</th>
+                <th>Visit Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% now "DATE_FORMAT" as current_year %} {% for plan_visit in plan_visits%}
+            <tr>
+                <td>{{plan_visit.first_name}} {{plan_visit.last_name}}</td>
+                <td>{{plan_visit.email}}</td>
+                <td>{{plan_visit.visit.visit_route.name}}</td>
+                <td>{{plan_visit.visit.title}}</td>
+                <td>{{plan_visit.visit.date}}</td>
+                <td>
+                    {% if current_year is plan_visit.visit.date %} yes {%else%} no {%endif%}</td>
+                <td>{{current_year}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{%endblock%}

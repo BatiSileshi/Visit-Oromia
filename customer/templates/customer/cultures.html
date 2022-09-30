@@ -1,12 +1,18 @@
 {% extends 'customer/main.html'%} {%block content %}
-<div>
-    <h2>Cultures</h2>
-    {% for culture in cultures %}
-    <div>
 
-        <h4>{{culture.name}}</h4>
-        <p>{{culture.description}}</p>
+<section>
+    <h4 class="brand-logo center">Oromo Cultures</h4>
+    <hr width="50%" ; height="1px;" color="grey">
+    <div class="container culture">
+        {% for culture in cultures %}
+        <div>
+            <h5 class="green-text">{{culture.name}}</h5>
+            <p>
+                <i class="material-icons green-text medium">note</i> {{culture.description}}
+            </p>
+        </div>
+        {%endfor%}
+
     </div>
-    {%endfor%}
-</div>
+</section>
 {% endblock content%}

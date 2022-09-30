@@ -1,13 +1,27 @@
 {% extends 'customer/main.html'%} {%block content %}
-<div>
-    <h2>News</h2>
-    {% for new in news %}
-    <div>
-        {% if new.photo %}
-        <img src="{{new.photo.url}}" alt="This news has no image" style="width: 70px; height: 50px;"> {%else%}
-        <p>This news has no image</p>{%endif%}
-        <p>{{new.about}}</p>
+<!-- NEWS -->
+<section>
+    <div class="cont">
+        <h4 class="brand-logo center">News</h4>
+        <hr width="50%" ; height="1px;" color="grey">
+        <div class="news row">
+            {% for new in news %}
+            <div class="col s12 m6 l4">
+                <div class="news-card">
+                    {% if new.photo %}
+                    <div class="news-image card-image">
+                        <img src="{{new.photo.url}}">
+                    </div>
+                    {%endif%}
+                    <div class="news-content">
+                        <span class="card-title">{{new.title}}</span>
+                        <p>{{new.about}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
     </div>
-    {%endfor%}
-</div>
+</section>
+<!-- END OF NEWS -->
 {% endblock content%}

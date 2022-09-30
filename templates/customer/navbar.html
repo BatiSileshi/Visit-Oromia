@@ -1,16 +1,36 @@
-<ul>
-    <li><a href="{% url 'home' %} " class="active ">Home</a></li>
-    <li><a href="{% url 'news' %} " class="active ">News</a></li>
-    <li><a href="{% url 'plans' %} " class="active ">Plans</a></li>
-    <li><a href="{% url 'gallery' %} " class="active ">Gallery</a></li>
-    <li><a href="{% url 'cultures' %} " class="active ">Cultures</a></li>
+<div class="navbar-fixed">
+    <nav class="nav-wraper white darken-1">
+
+        <div class="container ">
+            <a href="{% url 'home' %}" class="brand-logo green-text">Visit Oromia </a>
+            <a href="" class="sidenav-trigger" data-target="mobile-links">
+                <i class="material-icons green-text">menu</i>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+
+                <li><a href="{% url 'home' %}" class="green-text"> Home</a></li>
+                <li><a href="{% url 'news' %}" class="green-text"> News</a></li>
+                <li><a href="{% url 'plans' %}" class="green-text">Plans</a></li>
+                <li><a href="{% url 'gallery' %}" class="green-text"> Gallery</a></li>
+                <li><a href="{% url 'cultures' %}" class="green-text">Cultures</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'my-plan' request.user.id %}" class="green-text">My Plans</a></li>
+                <li><a href="{% url 'logout' %} " class="white-text btn red">Logout</a> </li> {%else%}
+                <li><a href="{% url 'login' %} " class="white-text btn green">Login</a></li>{%endif%}
+
+            </ul>
+        </div>
+    </nav>
+</div>
+<ul class="sidenav" id="mobile-links">
+    <li><a href="{% url 'home' %}" class="green-text"> Home</a></li>
+    <li><a href="{% url 'news' %}" class="green-text"> News</a></li>
+    <li><a href="{% url 'plans' %}" class="green-text">Plans</a></li>
+    <li><a href="{% url 'gallery' %}" class="green-text"> Gallery</a></li>
+    <li><a href="{% url 'cultures' %}" class="green-text">Cultures</a></li>
     {% if request.user.is_authenticated %}
-    <li><a href="{% url 'my-plan' request.user.id %}">My Plans</a></li>
-
-    <a href="{% url 'logout' %} ">Logout</a> {%else%}
-
-
-    <li><a class="get-a-quote " href="{% url 'login' %} ">Login/Register</a></li>{%endif%}
+    <li><a href="{% url 'my-plan' request.user.id %}" class="green-text">My Plans</a></li>
+    <li><a href="{% url 'logout' %} " class="white-text btn red">Logout</a> </li> {%else%}
+    <li><a href="{% url 'login' %} " class="white-text btn green">Login</a></li>{%endif%}
 </ul>
-
-<hr>

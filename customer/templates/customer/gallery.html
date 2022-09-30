@@ -1,12 +1,23 @@
-{% extends 'customer/main.html'%} {%block content %}
-<div>
-    {% for gallery in galleries %}
-    <div>
-        {% if gallery.photo %}
-        <img src="{{gallery.photo.url}}" alt="Please come and see when your connection is sufficient" style="width: 70px; height: 50px;"> {%endif%}
-        <p>{{gallery.about}}</p>
+{% extends 'customer/gallery_main.html'%} {%block content %}
+
+<section>
+    <div class="cont">
+
+        <div class="row center" style="align-content: center;">
+            {% for gallery in galleries %}
+            <div class="gallery s12 m4 l3 ">
+                {% if gallery.photo %}
+                <a href="{{gallery.photo.url}}">
+                    <img src="{{gallery.photo.url}}" alt="Please come and see when your connection is sufficient">
+                </a>
+                {%endif%}
+                <div class="desc">{{gallery.about}}</div>
+            </div>
+            {%endfor%}
+        </div>
     </div>
-    {%endfor%}
-</div>
+</section>
+
+
 
 {%endblock%}

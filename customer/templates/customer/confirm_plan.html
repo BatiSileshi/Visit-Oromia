@@ -1,14 +1,35 @@
 {% extends 'customer/main.html'%} {%block content %}
-<div>confirm plan</div>
-<div>
-    <h2>You are planning ...</h2>
-    <h4>{{visit.visit_route.name}}</h4>
-    <h4>{{visit}}</h4>
 
-    <form action="" method="POST">
-        {% csrf_token%}
-        <input type="submit" value="Confirm Plan">
-    </form>
-    <a href="{% url 'home' %}"><button>Cancel</button></a>
+
+<div class="container">
+    <h4 class="brand-logo center">Confirm Plan</h4>
+    <hr width="50%" height="1px" color="grey">
+
+    <h5>You are planning</h5>
+    <ul>
+        <li>
+            <i class="material-icons tiny">next_plan</i> {{visit.visit_route.name}}
+        </li>
+        <li>
+            <i class="material-icons tiny">next_plan</i> {{visit.description}}
+        </li>
+        <li>
+            <i class="material-icons tiny">next_plan</i> To visit on {{visit.date}}
+        </li>
+    </ul>
+    <div class="row">
+
+        <div class="col s6 l6 m6">
+            <form action="" method="POST">
+                {% csrf_token%}
+                <input type="submit" value="Confirm Plan" class="btn blue">
+            </form>
+        </div>
+        <div class="col s6 l6 m6">
+            <a href="{% url 'home' %}"><button class="btn red">Cancel</button></a>
+        </div>
+    </div>
+
+
 </div>
 {%endblock%}

@@ -1,0 +1,28 @@
+{% extends 'customer/main.html'%} {%block content %}
+<!-- PLACES TO VISIT -->
+<section>
+    <div class="cont">
+        <h4 class="gray-text center brand-logo">Places to visit</h4>
+        <hr width="50%" ; height="1px;" color="grey">
+        <div class="row">
+            {% for place in places%}
+            <div class="col s12 m6 l4">
+                <div class="card ">
+                    {% if place.photo %}
+                    <div class="card-image"> <img src="{{place.photo.url}}" alt="Places to visit image" style="height: 240px;"></div>
+                    {%endif%}
+                    <div class="card-content black-text">
+
+                        <span class="card-title green-text">{{place.name}}</span>
+                        <p>{{place.location}} <br> {{place.description}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+
+
+</section>
+<!-- END OF PLACES TO VISIT -->
+{% endblock content%}

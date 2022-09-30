@@ -1,11 +1,25 @@
 {% extends 'customer/main.html'%} {%block content %}
-<form method="POST" action="">
-    {% csrf_token%}
+<section>
+    <div class="container">
+        <h4 class="brand-logo center">Cancelling Plan</h4>
+        <hr width="50%" ; height="1px;" color="grey">
+        <form method="POST" action="">
+            {% csrf_token%}
 
-    <p>Are you sure you want to cancel "{{obj}}"?</p>
-    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+            <h6>Are you sure you want to cancel "{{obj}}"?</h6>
+            <div class="row">
+                <div class="col s6 m6 l6">
 
-    <input type="submit" value="Confirm">
+                    <a href="{{request.META.HTTP_REFERER}}" class="btn blue">Go back</a>
+                </div>
+                <div class="col s6 m6 l6">
+                    <input type="submit" value="Confirm" class="btn red">
+                </div>
 
-</form>
+
+            </div>
+        </form>
+
+    </div>
+</section>
 {% endblock content%}

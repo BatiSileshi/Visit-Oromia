@@ -2,19 +2,29 @@
 
 <!-- /.login-logo -->
 {% if page == 'login' %}
-<div class="card">
-    <div class="card-body login-card-body">
-        <form method="POST" action="">
+<nav class="nav-wraper white darken-1">
+    <div class="container ">
+        <a href="{% url 'home' %}" class="brand-logo green-text">Visit Oromia</a>
+
+
+</nav>
+<section>
+    <div class="container">
+        <h4 class="brand-logo center">Login</h4>
+        <hr width="30%" ; height="1px;" color="grey">
+
+        <form method="POST" action="" class="green-light">
             {% csrf_token %}
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="username" placeholder="Enter your username">
-
+                <label style="font-size: medium;">Your Email:
+                    <input type="text" class="form-control" name="username" placeholder="Enter your email">
+                  </label>
             </div>
 
-
-
             <div class="input-group mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Enter your password"> {% if request.GET.next %}
+                <label style="font-size: medium;">Password:
+                    <input type="password" class="form-control" name="password" placeholder="Enter your password"> 
+                  </label> {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{request.GET.next}}"> {%endif%}
 
             </div>
@@ -23,7 +33,7 @@
             <div class="row">
                 <!-- /.col -->
                 <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                    <button type="submit" class="btn ">Log in</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -32,24 +42,37 @@
             Haven't became a member yet?
         </p>
         <a class="text-center" href="{% url 'register' %}"> Register</a>
+
     </div>
-</div>
+</section>
 
 {%else%}
-<div>
-    <form method="POST" action="">
-        {% csrf_token %} {{form.as_p}}
-        <input type="submit" value="Register">
-    </form>
+<nav class="nav-wraper white darken-1">
+    <div class="container">
+        <a href="{% url 'home' %}" class="brand-logo green-text">Visit Oromia</a>
+    </div>
+</nav>
 
-    <p>
-        Already a member?
-    </p>
-    <a href="{% url 'login' %}"> Login</a>
-</div>
-{%endif%}
+<section>
+    <div class="container">
+        <h4 class="brand-logo center">Register</h4>
+        <hr width="30%" ; height="1px;" color="grey">
+        <div>
+            <form method="POST" action="" class="green-light">
+                {% csrf_token %} {{form.as_p}}
 
-</div>
 
+                <input type="submit" value="Register" class="btn">
+            </form>
+
+            <p>
+                Already a member?
+            </p>
+            <a href="{% url 'login' %}"> Login</a>
+        </div>
+        {%endif%}
+
+    </div>
+</section>
 
 {% endblock content%}

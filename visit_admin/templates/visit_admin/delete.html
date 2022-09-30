@@ -1,0 +1,21 @@
+{% extends 'visit_admin/main.html'%} {%block content %}
+
+<form method="POST" action="">
+    {% csrf_token%}
+
+    <h6>Are you sure you want to delete "{{obj}}"?</h6>
+    <div class="row">
+        <div class="col s6 m6 l6">
+
+            <a href="{{request.META.HTTP_REFERER}}" class="btn blue">Go back</a>
+        </div>
+        <div class="col s6 m6 l6">
+            <input type="submit" value="Confirm" class="btn red">
+        </div>
+
+
+    </div>
+</form>
+
+
+{% endblock content%}

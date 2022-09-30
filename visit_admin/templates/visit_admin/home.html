@@ -1,4 +1,18 @@
 {% extends 'visit_admin/main.html'%} {%block content %}
 <div>visit admin home</div>
-
+<p>
+    <a href="{% url 'visit_admin:manage-visit' %}">Manage Visit/Plan</a>
+</p>
+<p>
+    <a href="{% url 'visit_admin:manage-visitroute' %}">Manage Visit Route</a>
+</p>
+<p>
+    <a href="{% url 'visit_admin:manage-plans' %}">Manage Plans</a>
+</p>
+<p>
+    <a href="">Account Setting</a>
+</p>
+<p>
+    <a href="{% url 'logout' %}">Logout</a>
+</p>
 {%endblock%}
