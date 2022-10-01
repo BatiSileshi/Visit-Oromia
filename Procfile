@@ -1,0 +1,1 @@
+web: gunicorn Visit_Oromia.wsgi --log-file -
