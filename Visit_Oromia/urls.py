@@ -22,15 +22,16 @@ from django.views.static import serve
 from django.urls import re_path
 
 urlpatterns = [
- 
+    re_path(r'^images/(?P<path>.*)$', serve,{'document_root':settings.MEDIA_ROOT}), 
+    re_path(r'^staticfiles/(?P<path>.*)$', serve,{'document_root':settings.STATIC_ROOT}), 
+    
     
     
     path('admin/', admin.site.urls),
     path('', include('customer.urls')),
     path('visit-admin/', include('visit_admin.urls')),  
 
-    re_path(r'^images/(?P<path>.*)$', serve,{'document_root':settings.MEDIA_ROOT}), 
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root':settings.STATIC_ROOT}),  
+ 
     
     ]
 
