@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'visit-oromia.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise',
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,14 +127,11 @@ STATIC_URL = '/static/'
 
 MEDIA_URL='/images/'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-if DEBUG:
 
-  STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-else:
-
-  STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 MEDIA_ROOT=os.path.join(BASE_DIR, 'images')
